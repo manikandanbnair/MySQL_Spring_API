@@ -43,7 +43,7 @@ public class EmployeeControllerTest {
     private EmployeeManagerService employeeService;
 
     @Autowired
-    private ObjectMapper objectMapper; // Auto-configured by Spring Boot
+    private ObjectMapper objectMapper;
 
     @BeforeEach
     void setUp() {

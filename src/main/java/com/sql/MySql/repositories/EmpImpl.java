@@ -65,8 +65,7 @@ public class EmpImpl implements EmployeeManagerCustomRepository {
     @Override
     public List<EmployeeManagerModel> getEmployeesByManagerIdAndJoiningDate(String managerId,
             LocalDateTime minJoiningDate) {
-        // Calculate the minimum date of joining based on the minimum years of
-        // experience
+        // Calculate the minimum date of joining based on the minimum years of experience
 
         String query = "SELECT e FROM EmployeeManagerModel e WHERE e.managerId = :managerId AND e.dateOfJoining <= :minJoiningDate";
         TypedQuery<EmployeeManagerModel> typedQuery = entityManager.createQuery(query, EmployeeManagerModel.class);

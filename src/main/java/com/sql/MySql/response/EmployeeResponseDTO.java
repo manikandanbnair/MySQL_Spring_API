@@ -2,6 +2,7 @@ package com.sql.MySql.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 public class EmployeeResponseDTO {
     private String id; // Changed from Long to String
@@ -82,23 +83,23 @@ public class EmployeeResponseDTO {
         return dateOfJoining;
     }
 
-    public void setDateOfJoining(LocalDateTime dateOfJoining) {
-        this.dateOfJoining = dateOfJoining;
+    public void setDateOfJoining(LocalDateTime localDateTime) {
+        this.dateOfJoining = localDateTime;
     }
 
     public LocalDateTime getCreatedTime() {
         return createdTime;
     }
 
-    public void setCreatedTime(LocalDateTime createdTime) {
-        this.createdTime = createdTime;
+    public void setCreatedTime(LocalDateTime localDateTime) {
+        this.createdTime = localDateTime;
     }
 
     public LocalDateTime getUpdatedTime() {
         return updatedTime;
     }
 
-    public void setUpdatedTime(LocalDateTime updatedTime) {
-        this.updatedTime = updatedTime;
+    public void setUpdatedTime(LocalDateTime localDateTime) {
+        this.updatedTime = localDateTime;
     }
 }

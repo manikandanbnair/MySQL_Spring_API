@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -52,7 +53,7 @@ public class EmployeeManagerService {
         employee.setCreatedTime(now);
         employee.setUpdatedTime(now);
 
-        Boolean check = true;
+      
         // Handle employee as manager or regular employee
         if ("0".equals(managerId)) { // Changed to String comparison
             if ("Account Manager".equalsIgnoreCase(designation)) {
@@ -159,6 +160,7 @@ public class EmployeeManagerService {
                 detailsList.add(details);
             } else {
                 check = false;
+                throw new IllegalArgumentException("Invalid Manager ID");
             }
         } else if (managerId != null) {
             if (Integer.parseInt(managerId) < 0) {
@@ -276,6 +278,7 @@ public class EmployeeManagerService {
 
                 employee.setManagerId(newManagerId);
                 employee.setDepartment(newManager.getDepartment());
+                employee.setUpdatedTime(LocalDateTime.now());
                 employeeManagerMainRepository.save(employee);
 
                 name = employee.getName();
@@ -293,6 +296,7 @@ public class EmployeeManagerService {
     }
 
     // DELETE
+    @Transactional
     public ResponseMessage deleteEmployee(String id) {
         ResponseMessage responseMessage = new ResponseMessage();
         EmployeeManagerModel employeeOpt = employeeManagerRepository.findByIdCustom(id);
